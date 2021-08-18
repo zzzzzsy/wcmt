@@ -27,7 +27,7 @@ jobs:
     - name: Test
       run: make test
   build:
-    if: github.event.pull_request.merged == 'true' && github.event.action == 'closed'
+    if: github.event.pull_request.merged == true && github.event.action == 'closed'
     strategy:
       matrix:
         go-version: [1.16.x]
