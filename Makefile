@@ -1,4 +1,5 @@
 INFRA_BASE=./infra
+IMAGETAG:=$(shell scripts/get_version.sh)
 
 .PHONY: build push all
 
