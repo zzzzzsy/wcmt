@@ -15,6 +15,6 @@ WORKDIR /api
 COPY --from=app-builder /api/app .
 
 ENV GIN_MODE=release
-EXPOSE 9090
+EXPOSE 8080
 
 ENTRYPOINT ["./app", "run"]
