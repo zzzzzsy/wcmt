@@ -6,7 +6,7 @@
 FILE=VERSION
 git_version=$(git rev-parse --short HEAD)
 
-if [[ -f "$FILE" ]]; then
+if [ -f "$FILE" ]; then
     version=$(cat "$FILE" | xargs)
     if [[ -n $version ]]; then
         echo $version

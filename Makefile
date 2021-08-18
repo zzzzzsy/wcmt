@@ -1,5 +1,6 @@
 INFRA_BASE=./infra
-IMAGETAG:=$(shell scripts/get_version.sh)
+VERSION:=$(shell scripts/get_version.sh)
+FULLIMAGENAME=zzzzzsy/wcmt:${VERSION}
 
 .PHONY: build push all
 
@@ -24,10 +25,10 @@ run-local: ## Run locally (requires local install of go)
 	go run main.go run
 
 build: ## Builds the docker container
-	@docker build --pull -t ${IMAGETAG} .
+	@docker build --pull -t ${FULLIMAGENAME} .
 
 push: ## Push the built container to the repo (requires login either public or private registry)
-	@docker push ${IMAGETAG}
+	@docker push ${FULLIMAGENAME}
 
 run-docker: build ## Run locally in docker (requires local access to a docker daemon).
-	docker run -i -t -p 8080:8080 ${IMAGETAG}
+	docker run -i -t -p 8080:8080 ${FULLIMAGENAME}
