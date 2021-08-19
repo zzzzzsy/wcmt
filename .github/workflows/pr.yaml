@@ -48,7 +48,7 @@ jobs:
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
     - name: Push image to dockerhub
       run: make push
-    # - name: Remotely deployment with ssh
+    # - name: Remote deployment with ssh
     #   uses: appleboy/ssh-action@master
     #   with:
     #     host: ${{ secrets.HOST }}
@@ -57,6 +57,7 @@ jobs:
     #     port: ${{ secrets.PORT }}
     #     script: |
     #       echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+    #       docker ps --filter status=running -q | xargs docker rm -f
     #       make run-docker
     - name: Deploy the pull request
       run: |

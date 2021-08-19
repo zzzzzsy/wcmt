@@ -61,5 +61,21 @@ make test
 make run-local
 
 # Run local docker
-IMAGETAG=1.0.0 make run-docker
+make run-docker
 ```
+
+## CI/CD
+### Current process
+- Test: the Github action will be auto-triggered when a PR is `opened` or `updated`. It will handle the unit test.
+- Build and deploy: the Github action will be auto-triggered when a PR is `merged` and `closed`, it will push the image to Dockerhub when the docker image is built successfully. At last, based on the Github secret configurations(`secrets.HOST`, `secrets.USERNAME`, `secrets.PASSWORD` and `secrets.PORT`), the image will be pulled and running on the target server.
+#### Pros
+- Straightforward and easy to implement
+#### Cons
+- Hard to manage Github secrets when the services size become large
+
+#### Notes
+The remote deployment is comment out and not tested. instead, there is another mock step to simulate the deployment with succeed returned directly.
+
+### Proposal
+- Use Github action as CI only - build image and provide CI gate validation(sonar, unit test)
+- Integrate any other tool like Jenkins to handle CD process
