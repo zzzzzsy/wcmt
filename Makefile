@@ -30,5 +30,5 @@ build: ## Builds the docker container
 push: ## Push the built container to the repo (requires login either public or private registry)
 	@docker push ${FULLIMAGENAME}
 
-run-docker: build ## Run locally in docker (requires local access to a docker daemon).
+run-docker: ## Run locally in docker (requires local access to a docker daemon).
 	docker run -i -t -p 8080:8080 ${FULLIMAGENAME}

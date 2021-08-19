@@ -48,3 +48,21 @@ jobs:
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
     - name: Push image to dockerhub
       run: make push
+    # - name: Run image remotely
+    #   uses: appleboy/ssh-action@master
+    #   with:
+    #     host: ${{ secrets.HOST }}
+    #     username: ${{ secrets.USERNAME }}
+    #     password: ${{ secrets.PASSWORD }}
+    #     port: ${{ secrets.PORT }}
+    #     script: |
+    #       echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+    #       make run-docker
+    - name: Deploy the pull request
+      run: |
+        # deployment logic goes here
+        sleep 10
+        # instead we randomly succeed or fail the deployment
+        make run-docker
+        exit 0
+        # exit $(( $RANDOM % 10 >= 5 ))
