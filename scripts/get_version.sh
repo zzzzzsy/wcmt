@@ -1,6 +1,6 @@
 #!/bin/sh
 # get version value from VERSION file as the image tag
-# if VERSION file not exists or the version value is empty
+# if VERSION file does not exist or the version value is empty
 # return truncated git number
 
 FILE=VERSION
