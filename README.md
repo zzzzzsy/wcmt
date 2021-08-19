@@ -57,7 +57,7 @@ make tf-apply
 # Run test
 make test
 
-# Run local
+# Run locally
 make run-local
 
 # Run local docker
@@ -71,7 +71,7 @@ make run-docker
 #### Pros
 - Straightforward and easy to implement
 #### Cons
-- Hard to manage Github secrets when the services size become large
+- Hard to manage Github secrets when the size of the services become large
 
 #### Notes
 The remote deployment is comment out and not tested. instead, there is another mock step to simulate the deployment with succeed returned directly.
